@@ -1,6 +1,7 @@
 package com.smartsys.billing_service.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.smartsys.billing_service.model.Customer;
@@ -13,11 +14,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @NoArgsConstructor
@@ -25,15 +24,13 @@ import lombok.ToString;
 @Getter
 @Setter
 @Builder
-@ToString
-@EqualsAndHashCode
 public class Bill {
     @Id @GeneratedValue(strategy =GenerationType.IDENTITY)
     private Long id;
     private LocalDate bellingDate;
     private Long customerId;
     @OneToMany(mappedBy = "bill")
-    private List<ProductItem> productItems;
+    private List<ProductItem> productItems = new ArrayList<>();
     @Transient
     private Customer customer;
 }

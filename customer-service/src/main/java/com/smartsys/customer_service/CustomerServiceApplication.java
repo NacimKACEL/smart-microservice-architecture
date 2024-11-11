@@ -3,12 +3,15 @@ package com.smartsys.customer_service;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
+import com.smartsys.customer_service.config.CustomerConfigParams;
 import com.smartsys.customer_service.entities.Customer;
 import com.smartsys.customer_service.repository.CustomerRepository;
 
 @SpringBootApplication
+@EnableConfigurationProperties(CustomerConfigParams.class)
 public class CustomerServiceApplication {
 
 	public static void main(String[] args) {

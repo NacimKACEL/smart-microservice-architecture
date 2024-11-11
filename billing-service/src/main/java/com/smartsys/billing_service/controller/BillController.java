@@ -3,13 +3,13 @@ package com.smartsys.billing_service.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.smartsys.billing_service.entities.Bill;
 import com.smartsys.billing_service.feign.CustomerRestClient;
 import com.smartsys.billing_service.feign.ProductRestClient;
 import com.smartsys.billing_service.repository.BillRepository;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.smartsys.billing_service.repository.ProductItemRepository;
 
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 public class BillController {
@@ -19,6 +19,9 @@ public class BillController {
     private CustomerRestClient customerRestClient;
     @Autowired
     private ProductRestClient productRestClient;
+
+    @Autowired
+    private ProductItemRepository productItemRepository;
     
     @GetMapping("bills/{id}")
     public Bill getBill(@PathVariable Long id) {
